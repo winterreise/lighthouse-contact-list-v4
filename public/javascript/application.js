@@ -22,13 +22,20 @@
   }
 
   function createContact(name, email) {
+    // clear form
+    $('#name').val('');
+    $('#email').val('');
+    // make a new contact object
+    var contact = {
+      name: name,
+      email: email
+    };
+    // post object
     $.ajax({
       url: '/contacts',
       method: 'POST',
-      data: {
-        name: name,
-        email: email
-      },
+      contentType: 'application/json',
+      data: JSON.stringify(contact),
       success: refreshContacts
     });
   }
@@ -46,7 +53,14 @@
     refreshContacts();
 
     $(document).on('click','button',function(e){
-      deleteContact($(e.target).attr('data-id'));
+      e.preventDefault();
+      // is this a delete or an add button?
+      var button = e.target;
+      if ($(button).attr('type') === 'submit') {
+        createContact($('#name').val(), $('#email').val());
+      } else {
+        deleteContact($(e.target).attr('data-id'));
+      }
     });
   });
 })();

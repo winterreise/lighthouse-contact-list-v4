@@ -37,7 +37,8 @@ post '/contacts' do
   rescue ActiveRecord::RecordInvalid => error
     STDERR.puts error
     status 400
-  rescue
+  rescue => error
+    STDERR.puts error
     status 500
   end
 end
