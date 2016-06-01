@@ -6,26 +6,25 @@ end
 # REST API for Contact
 
 # get a single contact
-get '/contact/:id' do
-  contact = Contact.find(params[:id])
-  # TODO return as JSON
+get '/contacts/:id' do
+  Contact.find(params[:id]).as_json
 end
 
 # get all contacts (possibly with search)
-get '/contact' do
+get '/contacts' do
 
 end
 
 # create a contact
-post '/contact' do
+post '/contacts' do
 
 end
 
 # update a specific contact? maybe?
-put '/contact/:id' do
+put '/contacts/:id' do
 
 end
 
 # delete a contact
-delete '/contact/:id' do
+delete '/contacts/:id' do
 end
