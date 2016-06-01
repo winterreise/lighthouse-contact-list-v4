@@ -11,12 +11,23 @@
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/stylesheets/application.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <title></title>
 </head>
-<body>
+<body class="container">
   <%= yield %>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+  <script id="contact-template" type="text/x-handlebars-template">
+    <tr id="{{id}}">
+      <td>{{name}}</td>
+      <td>{{email}}</td>
+      <td>{{created_at}}</td>
+      <td>{{updated_at}}</td>
+      <td><button class="delete-contact btn btn-sm btn-danger" data-id="{{id}}">delete</button></td>
+    </tr>
+  </script>
   <script src="/javascript/application.js"></script>
 </body>
 </html>
